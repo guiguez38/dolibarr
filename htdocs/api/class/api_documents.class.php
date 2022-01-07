@@ -632,6 +632,10 @@ class Documents extends DolibarrApi
 				$modulepart = 'propale';
 				require_once DOL_DOCUMENT_ROOT.'/comm/propal/class/propal.class.php';
 				$object = new Propal($this->db);
+			} elseif ($modulepart == 'order' || $modulepart == 'commande') {
+				$modulepart = 'commande';
+				require_once DOL_DOCUMENT_ROOT.'/commande/class/commande.class.php';
+				$object = new Commande($this->db);
 			} else {
 				// TODO Implement additional moduleparts
 				throw new RestException(500, 'Modulepart '.$modulepart.' not implemented yet.');
